@@ -107,3 +107,17 @@ body.no-scroll{overflow:hidden}
   .lightbox-next{right:10px}
   .lightbox-close{right:18px}
 }
+
+.info-section{padding:120px 4vw;border-top:1px solid var(--line)}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10vw;align-items:start}
+.info-section h2{font-size:clamp(50px,6vw,90px);line-height:.92;margin:0;letter-spacing:-.035em}
+.info-copy{max-width:520px;color:#bcb8b0;font-size:17px;line-height:1.7}
+.topic-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:45px}
+.topic-list span{padding:15px 0;border-bottom:1px solid var(--line);font:9px DM Mono,monospace;text-transform:uppercase;letter-spacing:.12em;color:#ddd}
+.journal-section{background:#e9e5dc;color:#151514}
+.journal-section .section-head{border-color:#c8c3b9}
+.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.journal-grid article{border-top:1px solid #aaa59b;padding:24px 20px 30px 0;min-height:230px}
+.journal-grid h2{font-size:30px;margin:35px 0 15px}
+.journal-grid p{max-width:320px;font-size:14px;line-height:1.7;color:#5d5a55}
+@media(max-width:700px){.info-section{padding:90px 20px}.info-grid,.journal-grid{grid-template-columns:1fr;gap:50px}.topic-list{grid-template-columns:1fr}.journal-grid{gap:25px}.journal-grid article{min-height:0}.journal-grid h2{margin-top:25px}}
