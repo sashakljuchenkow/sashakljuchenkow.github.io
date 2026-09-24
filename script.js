@@ -8,7 +8,7 @@ const mobileMenu = document.querySelector('.mobile-menu');
 const galleries = {
   portrait: { title: 'Portrait', folder: 'portrait', count: 16, extension: 'jpg' },
   fashion: { title: 'Fashion', folder: 'fashion', count: 23, extension: 'jpg' },
-  art: { title: 'Contemporary Art', folder: 'art', count: 0, extension: 'webp' },
+  art: { title: 'Contemporary Art', folder: 'art', count: 0, extension: 'jpg' },
   documentary: { title: 'Documentary', folder: 'documentary', count: 0, extension: 'jpg' },
   landscape: { title: 'Landscape', folder: 'landscape', count: 17, extension: 'jpg' }
 };
