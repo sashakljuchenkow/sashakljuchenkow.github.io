@@ -6,18 +6,18 @@ const menuButton = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 
 const galleries = {
-  portrait: { title: 'Portrait', folder: 'portrait' },
-  fashion: { title: 'Fashion', folder: 'fashion' },
-  art: { title: 'Contemporary Art', folder: 'art' },
-  documentary: { title: 'Documentary', folder: 'documentary' },
-  landscape: { title: 'Landscape', folder: 'landscape' }
+  portrait: { title: 'Portrait', folder: 'portrait', count: 16, extension: 'jpg' },
+  fashion: { title: 'Fashion', folder: 'fashion', count: 0, extension: 'webp' },
+  art: { title: 'Contemporary Art', folder: 'art', count: 0, extension: 'webp' },
+  documentary: { title: 'Documentary', folder: 'documentary', count: 0, extension: 'jpg' },
+  landscape: { title: 'Landscape', folder: 'landscape', count: 17, extension: 'jpg' }
 };
 
 let activeGallery = null;
 let activeIndex = 1;
 
-function imagePath(folder, index) {
-  return `assets/${folder}/${String(index).padStart(2, '0')}.jpg`;
+function imagePath(info, index) {
+  return `assets/${info.folder}/${String(index).padStart(2, '0')}.${info.extension}`;
 }
 
 function showGallery(folder, index = 1) {
@@ -26,6 +26,18 @@ function showGallery(folder, index = 1) {
 
   activeGallery = info;
   activeIndex = index;
+
+  if (activeGallery.count === 0) {
+    gallery.classList.add('is-open');
+    gallery.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+    galleryImage.classList.add('is-missing');
+    galleryImage.removeAttribute('src');
+    galleryTitle.textContent = activeGallery.title;
+    galleryCounter.textContent = 'Photos coming soon';
+    return;
+  }
+
   gallery.classList.add('is-open');
   gallery.setAttribute('aria-hidden', 'false');
   document.body.classList.add('no-scroll');
@@ -34,11 +46,12 @@ function showGallery(folder, index = 1) {
 
 function loadGalleryImage() {
   if (!activeGallery) return;
+
   galleryImage.classList.remove('is-missing');
-  galleryImage.src = imagePath(activeGallery.folder, activeIndex);
+  galleryImage.src = imagePath(activeGallery, activeIndex);
   galleryImage.alt = `${activeGallery.title} photograph ${activeIndex}`;
   galleryTitle.textContent = activeGallery.title;
-  galleryCounter.textContent = String(activeIndex).padStart(2, '0');
+  galleryCounter.textContent = `${String(activeIndex).padStart(2, '0')} / ${String(activeGallery.count).padStart(2, '0')}`;
 
   galleryImage.onerror = () => {
     galleryImage.classList.add('is-missing');
@@ -56,16 +69,16 @@ function closeGallery() {
 }
 
 function nextImage() {
-  if (!activeGallery) return;
+  if (!activeGallery || activeGallery.count === 0) return;
   activeIndex += 1;
-  if (activeIndex > 16) activeIndex = 1;
+  if (activeIndex > activeGallery.count) activeIndex = 1;
   loadGalleryImage();
 }
 
 function prevImage() {
-  if (!activeGallery) return;
+  if (!activeGallery || activeGallery.count === 0) return;
   activeIndex -= 1;
-  if (activeIndex < 1) activeIndex = 16;
+  if (activeIndex < 1) activeIndex = activeGallery.count;
   loadGalleryImage();
 }
 
