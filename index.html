@@ -18,12 +18,17 @@
       <span>Sasha Kljuchenkow</span>
       <small>Photographer & Visual Artist</small>
     </a>
-    <nav>
+    <nav class="desktop-nav">
       <a href="#works">Works</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="menu" aria-label="Open menu"><span></span><span></span></button>
+    <button class="menu" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    <div class="mobile-menu" aria-hidden="true">
+      <a href="#works">Works</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
   </header>
 
   <main id="top">
@@ -45,23 +50,23 @@
       </div>
 
       <div class="category-grid">
-        <a class="category tall" href="#portrait">
+        <a class="category tall" href="#gallery" data-gallery="portrait">
           <div class="image-placeholder"><img src="assets/portrait-01.webp" alt="Portrait by Sasha Kljuchenkow"></div>
           <div class="category-meta"><span>01</span><h2>Portrait</h2><span>View →</span></div>
         </a>
-        <a class="category" href="#fashion">
+        <a class="category" href="#gallery" data-gallery="fashion">
           <div class="image-placeholder"><img src="assets/fashion/01.webp" alt="Fashion photograph by Sasha Kljuchenkow"></div>
           <div class="category-meta"><span>02</span><h2>Fashion</h2><span>View →</span></div>
         </a>
-        <a class="category" href="#art">
+        <a class="category" href="#gallery" data-gallery="art">
           <div class="image-placeholder"><img src="assets/art/01.webp" alt="Contemporary art photograph by Sasha Kljuchenkow"><div class="placeholder-label">ART PHOTO</div></div>
           <div class="category-meta"><span>03</span><h2>Contemporary Art</h2><span>View →</span></div>
         </a>
-        <a class="category" href="#documentary">
+        <a class="category" href="#gallery" data-gallery="documentary">
           <div class="image-placeholder"><img src="assets/documentary/01.webp" alt="Documentary photograph by Sasha Kljuchenkow"></div>
           <div class="category-meta"><span>04</span><h2>Documentary</h2><span>View →</span></div>
         </a>
-        <a class="category wide" href="#landscape">
+        <a class="category wide" href="#gallery" data-gallery="landscape">
           <div class="image-placeholder"><img src="assets/landscape/01.webp" alt="Landscape photograph by Sasha Kljuchenkow"><div class="placeholder-label">LANDSCAPE PHOTO</div></div>
           <div class="category-meta"><span>05</span><h2>Landscape</h2><span>View →</span></div>
         </a>
@@ -137,6 +142,19 @@
     <span>© 2026 Sasha Kljuchenkow</span>
     <span>Photography / Visual Art</span>
   </footer>
+
+  <div class="lightbox" id="gallery" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close gallery">×</button>
+    <button class="lightbox-prev" aria-label="Previous image">←</button>
+    <figure>
+      <img class="lightbox-image" alt="">
+      <figcaption>
+        <span class="lightbox-title"></span>
+        <span class="lightbox-counter"></span>
+      </figcaption>
+    </figure>
+    <button class="lightbox-next" aria-label="Next image">→</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
