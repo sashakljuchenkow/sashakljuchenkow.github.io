@@ -17,7 +17,7 @@ let activeGallery = null;
 let activeIndex = 1;
 
 function imagePath(folder, index) {
-  return `assets/${folder}/${String(index).padStart(2, '0')}.webp`;
+  return `assets/${folder}/${String(index).padStart(2, '0')}.jpg`;
 }
 
 function showGallery(folder, index = 1) {
@@ -58,14 +58,14 @@ function closeGallery() {
 function nextImage() {
   if (!activeGallery) return;
   activeIndex += 1;
-  if (activeIndex > 12) activeIndex = 1;
+  if (activeIndex > 16) activeIndex = 1;
   loadGalleryImage();
 }
 
 function prevImage() {
   if (!activeGallery) return;
   activeIndex -= 1;
-  if (activeIndex < 1) activeIndex = 12;
+  if (activeIndex < 1) activeIndex = 16;
   loadGalleryImage();
 }
 
