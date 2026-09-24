@@ -7,7 +7,7 @@ const mobileMenu = document.querySelector('.mobile-menu');
 
 const galleries = {
   portrait: { title: 'Portrait', folder: 'portrait', count: 16, extension: 'jpg' },
-  fashion: { title: 'Fashion', folder: 'fashion', count: 0, extension: 'webp' },
+  fashion: { title: 'Fashion', folder: 'fashion', count: 23, extension: 'jpg' },
   art: { title: 'Contemporary Art', folder: 'art', count: 0, extension: 'webp' },
   documentary: { title: 'Documentary', folder: 'documentary', count: 0, extension: 'jpg' },
   landscape: { title: 'Landscape', folder: 'landscape', count: 17, extension: 'jpg' }
@@ -26,11 +26,11 @@ function showGallery(folder, index = 1) {
 
   activeGallery = info;
   activeIndex = index;
+  gallery.classList.add('is-open');
+  gallery.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('no-scroll');
 
   if (activeGallery.count === 0) {
-    gallery.classList.add('is-open');
-    gallery.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no-scroll');
     galleryImage.classList.add('is-missing');
     galleryImage.removeAttribute('src');
     galleryTitle.textContent = activeGallery.title;
@@ -38,9 +38,6 @@ function showGallery(folder, index = 1) {
     return;
   }
 
-  gallery.classList.add('is-open');
-  gallery.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('no-scroll');
   loadGalleryImage();
 }
 
