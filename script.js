@@ -7,7 +7,7 @@ const mobileMenu = document.querySelector('.mobile-menu');
 
 const galleries = {
   portrait: { title: 'Portrait', folder: 'portrait', count: 16, extension: 'jpg' },
-  fashion: { title: 'Fashion', folder: 'fashion', count: 23, extension: 'jpg' },
+  fashion: { title: 'Fashion', folder: 'fashion', files: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,23], count: 21, extension: 'jpg' },
   art: { title: 'Contemporary Art', folder: 'art', count: 18, extension: 'jpg' },
   documentary: { title: 'Documentary', folder: 'documentary', count: 39, extension: 'jpg' },
   landscape: { title: 'Landscape', folder: 'landscape', count: 17, extension: 'jpg' }
@@ -17,7 +17,8 @@ let activeGallery = null;
 let activeIndex = 1;
 
 function imagePath(info, index) {
-  return `assets/${info.folder}/${String(index).padStart(2, '0')}.${info.extension}`;
+  const fileNumber = info.files ? info.files[index - 1] : index;
+  return `assets/${info.folder}/${String(fileNumber).padStart(2, '0')}.${info.extension}`;
 }
 
 function showGallery(folder, index = 1) {
